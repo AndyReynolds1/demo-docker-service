@@ -1,0 +1,33 @@
+version: '3'
+services:
+  web:
+    image: areynolds762/demo-service-web
+    ports:
+     - "8080"
+    deploy:
+      labels:
+        com.example.description: "Todo - Web"
+      mode: replicated
+      replicas: 1
+    environment:
+     - API_PORT_8080_TCP_ADDR=api
+  api:
+    image: areynolds762/demo-service-api
+    ports:
+     - "8080"
+    deploy:
+      labels:
+        com.example.description: "Todo - API"
+      mode: replicated
+      replicas: 1
+    environment:
+     - DB_PORT_27017_TCP_ADDR=db
+  db:
+    image: mongo
+    ports:
+      - "27012"
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels:
+        com.example.description: "Todo - DB"
