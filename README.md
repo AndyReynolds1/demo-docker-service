@@ -67,7 +67,7 @@ portainer/portainer \
 ```
 
 # Multi container service example
-`git clone https://TheStally@bitbucket.org/TheStally/demo-docker-service.git`
+`git clone https://github.com/TheStally/demo-docker-service.git`
 
 `cd demo-docker-service`
 
