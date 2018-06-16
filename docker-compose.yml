@@ -1,5 +1,26 @@
 version: '3'
 services:
+db:
+    image: mongo
+    ports:
+      - "27012"
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels:
+        com.example.description: "Todo - DB"
+api:
+    image: areynolds762/demo-service-api
+    ports:
+     - "8080"
+    deploy:
+      labels:
+        com.example.description: "Todo - API"
+      mode: replicated
+      replicas: 1
+    environment:
+     - TODO_DB_SVC_SERVICE_HOST=db
+     - TODO_DB_SVC_SERVICE_PORT=27012
   web:
     image: areynolds762/demo-service-web
     ports:
@@ -12,24 +33,4 @@ services:
     environment:
      - TODO_API_SVC_SERVICE_HOST=api
      - TODO_API_SVC_SERVICE_PORT=8080
-  api:
-    image: areynolds762/demo-service-api
-    ports:
-     - "8080"
-    deploy:
-      labels:
-        com.example.description: "Todo - API"
-      mode: replicated
-      replicas: 1
-    environment:
-     - TODO_DB_SVC_SERVICE_HOST=db
-     - TODO_DB_SVC_SERVICE_PORT=27012
-  db:
-    image: mongo
-    ports:
-      - "27012"
-    deploy:
-      mode: replicated
-      replicas: 1
-      labels:
-        com.example.description: "Todo - DB"
+     
