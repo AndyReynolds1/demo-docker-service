@@ -10,7 +10,8 @@ services:
       mode: replicated
       replicas: 1
     environment:
-     - API_PORT_8080_TCP_ADDR=api
+     - TODO_API_SVC_SERVICE_HOST=api
+     - TODO_API_SVC_SERVICE_PORT=8080
   api:
     image: areynolds762/demo-service-api
     ports:
@@ -21,7 +22,8 @@ services:
       mode: replicated
       replicas: 1
     environment:
-     - DB_PORT_27017_TCP_ADDR=db
+     - TODO_DB_SVC_SERVICE_HOST=db
+     - TODO_DB_SVC_SERVICE_PORT=27012
   db:
     image: mongo
     ports:
