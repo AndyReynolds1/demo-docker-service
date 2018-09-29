@@ -72,4 +72,3 @@ portainer/portainer \
 `cd demo-docker-service`
 
 `docker-compose up`
-
